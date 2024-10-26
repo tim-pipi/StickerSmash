@@ -11,12 +11,6 @@ export default function RootLayout() {
         }}
       />
       <Stack.Screen
-        name="about"
-        options={{
-          headerTitle: 'About',
-        }}
-      />
-      <Stack.Screen
         name="+not-found"
         options={{
           headerShown: false,
