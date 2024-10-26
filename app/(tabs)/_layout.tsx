@@ -16,12 +16,6 @@ export default function TabsLayout() {
           headerTitle: 'About',
         }}
       />
-      <Tabs.Screen
-        name="+not-found"
-        options={{
-          headerShown: false,
-        }}
-      />
     </Tabs>
   );
 }
