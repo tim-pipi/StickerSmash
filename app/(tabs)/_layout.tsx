@@ -25,6 +25,15 @@ export default function TabsLayout() {
         name="about"
         options={{
           headerTitle: 'About',
+          tabBarIcon: ({ focused, color }) => (
+            <Ionicons
+              name={
+                focused ? 'information-circle' : 'information-circle-outline'
+              }
+              color={color}
+              size={30}
+            />
+          ),
         }}
       />
     </Tabs>
