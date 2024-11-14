@@ -1,8 +1,8 @@
+import { useState, useRef } from 'react';
 import { View, StyleSheet } from 'react-native';
 import ImageViewer from '@/components/ImageViewer';
 import Button from '@/components/Button';
 import * as ImagePicker from 'expo-image-picker';
-import { useState } from 'react';
 import IconButton from '@/components/IconButton';
 import CircleButton from '@/components/CircleButton';
 import EmojiPicker from '@/components/EmojiPicker';
@@ -10,6 +10,7 @@ import EmojiList from '@/components/EmojiList';
 import { ImageSource } from 'expo-image';
 import EmojiSticker from '@/components/EmojiSticker';
 import * as MediaLibrary from 'expo-media-library';
+import { captureRef } from 'react-native-view-shot';
 
 const PlaceholderImage = require('../../assets/images/background-image.png');
 
@@ -25,6 +26,8 @@ export default function Index() {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const [status, requestPermission] = MediaLibrary.usePermissions();
+
+  const imageRef = useRef<View>(null);
 
   if (status === null) {
     requestPermission();
@@ -56,10 +59,12 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <ImageViewer imgSource={selectedImage || PlaceholderImage} />
-        {pickedEmoji && (
-          <EmojiSticker stickerSource={pickedEmoji} imageSize={40} />
-        )}
+        <View ref={imageRef} collapsable={false}>
+          <ImageViewer imgSource={selectedImage || PlaceholderImage} />
+          {pickedEmoji && (
+            <EmojiSticker stickerSource={pickedEmoji} imageSize={40} />
+          )}
+        </View>
       </View>
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
