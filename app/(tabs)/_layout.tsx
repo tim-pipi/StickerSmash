@@ -14,6 +14,7 @@ export default function TabsLayout() {
         tabBarStyle: {
           backgroundColor: '#25292e',
         },
+        headerTitleAlign: 'center', // Add this line to center the header title
       }}
     >
       <Tabs.Screen
