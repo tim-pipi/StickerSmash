@@ -1,9 +1,14 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';  
+import ImageViewer from '@/components/ImageViewer';
+
+const PlaceholderImage = require('../../assets/images/background-image.png');
 
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello Expo.</Text>
+      <View style={styles.imageContainer}>
+        <ImageViewer imgSource={PlaceholderImage} />
+      </View>
     </View>
   );
 }
@@ -15,12 +20,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#25292e',
   },
-  text: {
-    color: 'white',
+  image: {
+    width: 320,
+    height: 440,
+    borderRadius: 18,
   },
-  button: {
-    fontSize: 20,
-    textDecorationLine: 'underline',
-    color: 'blue',
+  imageContainer: {
+    flex: 1,
+    paddingHorizontal: 50,
   },
 });
