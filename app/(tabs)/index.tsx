@@ -9,6 +9,7 @@ import EmojiPicker from '@/components/EmojiPicker';
 import EmojiList from '@/components/EmojiList';
 import { ImageSource } from 'expo-image';
 import EmojiSticker from '@/components/EmojiSticker';
+import * as MediaLibrary from 'expo-media-library';
 
 const PlaceholderImage = require('../../assets/images/background-image.png');
 
@@ -22,6 +23,12 @@ export default function Index() {
 
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+
+  const [status, requestPermission] = MediaLibrary.usePermissions();
+
+  if (status === null) {
+    requestPermission();
+  }
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
