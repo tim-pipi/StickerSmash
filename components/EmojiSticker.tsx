@@ -9,7 +9,10 @@ type Props = {
 export default function EmojiSticker({ imageSize, stickerSource }: Props) {
   return (
     <View style={{ top: -350 }}>
-      <Image source={stickerSource} style={{ width: imageSize, height: imageSize }} />
+      <Image
+        source={stickerSource}
+        style={{ width: imageSize, height: imageSize }}
+      />
     </View>
   );
 }
